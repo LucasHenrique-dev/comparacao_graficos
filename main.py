@@ -1,9 +1,15 @@
-from pdf_creator import create_pdf
+from pdf_creator import create_pdf, generate_new_header, save_pdf
 
 
 CONTEUDO_PDF = []
-titulo_documento = "Comparação Gráficos FLR"
-subtitulo_documento = "Comparativo do Simulador C++ com Paper de Emerson"
+documento = "pdf_varias_secoes"
+
+cabecalho_1 = "Estudos 1"
+subtitulo_1 = "Início dos Estudos"
+capitulos = 2
+
+cabecalho_2 = "Estudos 2"
+subtitulo_2 = "Estudos Aprofundados"
 capitulos = 2
 
 conteudo = """Hello World
@@ -35,4 +41,8 @@ for capitulo_index in range(1, capitulos+1):
 
 # print(CONTEUDO_PDF)
 
-create_pdf("exemplo_formatado.pdf", titulo_documento, subtitulo_documento, CONTEUDO_PDF)
+my_pdf = create_pdf(cabecalho_1, subtitulo_1, CONTEUDO_PDF)
+
+my_pdf = generate_new_header(my_pdf, cabecalho_2, subtitulo_2, CONTEUDO_PDF)
+
+save_pdf(my_pdf, documento)
